@@ -32,7 +32,7 @@ const Country = ({ country, getCountry }) => {
       <Link
         onClick={getCountry}
         name={country.name.official}
-        to={`/countrydetails/:${country.name.official}`}
+        to={`/countrydetails/${country.name.official}`}
       >
         <div className="country-header">
           <img

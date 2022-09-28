@@ -56,6 +56,7 @@
   flex-grow: 1;
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .border-countries-title {
@@ -74,6 +75,7 @@
   border-radius: 0.25rem;
   background-color: var(--Dark-Mode-Elements);
   color: #ffffff;
+  margin-top: 0.5rem;
 }
 
 button,
