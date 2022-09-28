@@ -16,7 +16,7 @@ const Filter = ({
     let x = document.getElementById("search-country").value;
     console.log(x);
     setActiveCountry(x);
-    navigate(`/countrydetails/:${x}`);
+    navigate(`/countrydetails/${x}`);
   }
 
   return (
