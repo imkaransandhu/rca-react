@@ -1,10 +1,22 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "./../App.css";
 import "./CountryPage.css";
 
-const CountryPage = ({ activeCountry }) => {
+const CountryPage = () => {
   const { key } = useParams();
   let nativeNames, currencies, population, languages;
+
+  const [activeCountry, setActiveCountry] = useState({});
+
+  useEffect(() => {
+    fetch(`https://restcountries.com/v3.1/name/${activeCountry}?fullText=true`)
+      .then((res) => res.json())
+      .then((allData) => {
+        setActiveCountry(allData[0]);
+      })
+      .catch((error) => console.error(error));
+  }, [activeCountry]);
 
   nativeNames = Object.values(activeCountry.name.nativeName);
   nativeNames = nativeNames.map((name) => name.common);

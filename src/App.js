@@ -12,7 +12,7 @@ function App() {
 
   const [activeRegion, setActiveRegion] = useState("Oceania");
   const [activeCountry, setActiveCountry] = useState("New Zealand");
-  const [activeCountryData, setActiveCountryData] = useState({});
+  // const [activeCountryData, setActiveCountryData] = useState({});
 
   const withoutDupAllRegions = [...new Set(allRegions)];
   const withoutDupAllCountriesName = [...new Set(allCountriesName)];
@@ -58,15 +58,6 @@ function App() {
       .catch((error) => console.error(error));
   }, [activeRegion]);
 
-  useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/name/${activeCountry}?fullText=true`)
-      .then((res) => res.json())
-      .then((allData) => {
-        setActiveCountryData(allData[0]);
-      })
-      .catch((error) => console.error(error));
-  }, [activeCountry]);
-
   return (
     <BrowserRouter>
       <Link to="/">
@@ -99,10 +90,7 @@ function App() {
           }
         />
 
-        <Route
-          path="/countrydetails/:key"
-          element={<CountryPage activeCountry={activeCountryData} />}
-        />
+        <Route path="/countrydetails/:key" element={<CountryPage />} />
       </Routes>
     </BrowserRouter>
   );
