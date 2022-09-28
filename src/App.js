@@ -1,33 +1,26 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Country from "./Country/Country";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AllCountries from "./Country/AllCountries";
 import CountryPage from "./CountryPage/CountryPage";
 import Filter from "./Filter/Filter";
 import Header from "./Header/Header";
 
 function App() {
-  const [allRegions, setAllRegions] = useState([]);
-  const [allCountries, setAllCountries] = useState([]);
-  const [allCountriesName, setAllCountriesName] = useState([]);
+  const [allRegions, setAllRegions] = useState([]); // Variable to Store all Regions
+  const [allCountries, setAllCountries] = useState([]); // variable to Store ALl Countries Data
+  const [allCountriesName, setAllCountriesName] = useState([]); // Variable to Store all Countries Name only
+  const [activeRegion, setActiveRegion] = useState("Oceania"); // Variable to Store current/Active Region
 
-  const [activeRegion, setActiveRegion] = useState("Oceania");
-  const [activeCountry, setActiveCountry] = useState("New Zealand");
-  // const [activeCountryData, setActiveCountryData] = useState({});
+  const withoutDupAllRegions = [...new Set(allRegions)]; // Removing the duplicates Regions from the array
+  const withoutDupAllCountriesName = [...new Set(allCountriesName)]; // Removing the duplicates Regions from the array
 
-  const withoutDupAllRegions = [...new Set(allRegions)];
-  const withoutDupAllCountriesName = [...new Set(allCountriesName)];
-
+  // Filter Region tO update the active region variable
   function updateRegion(event) {
     setActiveRegion(event.target.value);
     setAllCountries([]);
   }
 
-  function getCountry(e) {
-    let x = e.currentTarget.name;
-    console.log(x);
-    setActiveCountry(x);
-  }
-
+  // One time useEffect to get all regions and countries name from the API
   useEffect(() => {
     (async () => {
       const fetchALLCountries = await fetch(
@@ -47,6 +40,7 @@ function App() {
     })();
   }, []);
 
+  // UseEffect to work on region change
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/region/${activeRegion}`)
       .then((res) => res.json())
@@ -58,34 +52,25 @@ function App() {
       .catch((error) => console.error(error));
   }, [activeRegion]);
 
+  // Props for Filer Component
+  const filterPropsObject = {
+    withoutDupAllRegions,
+    withoutDupAllCountriesName,
+    activeRegion,
+    updateRegion,
+  };
+
   return (
     <BrowserRouter>
-      <Link to="/">
-        <Header />
-      </Link>
+      <Header />
 
       <Routes>
         <Route
           path="/"
           element={
             <div>
-              <Filter
-                allRegions={withoutDupAllRegions}
-                allCountriesName={withoutDupAllCountriesName}
-                activeRegion={activeRegion}
-                updateRegion={updateRegion}
-                setActiveCountry={setActiveCountry}
-                activeCountry={activeCountry}
-              />
-              <div className="all-countries">
-                {allCountries.map((country, index) => (
-                  <Country
-                    getCountry={getCountry}
-                    country={country}
-                    key={index}
-                  />
-                ))}
-              </div>
+              <Filter props={filterPropsObject} />
+              <AllCountries allCountries={allCountries} />
             </div>
           }
         />

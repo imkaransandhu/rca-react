@@ -1,8 +1,6 @@
-import "./Country.css";
-import "./../App.css";
 import { Link } from "react-router-dom";
 
-const Country = ({ country, getCountry }) => {
+const Country = ({ country }) => {
   let population;
   const changePopToNumberSystem = (population) => {
     let popInStart = population;
@@ -22,7 +20,6 @@ const Country = ({ country, getCountry }) => {
       population = population + "M";
     }
     return population;
-    // console.log(popInStart , population);
   };
 
   population = changePopToNumberSystem(country.population);
@@ -30,7 +27,6 @@ const Country = ({ country, getCountry }) => {
   return (
     <div className="country">
       <Link
-        onClick={getCountry}
         name={country.name.official}
         to={`/countrydetails/${country.name.official}`}
       >
