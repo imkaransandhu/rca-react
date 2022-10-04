@@ -1,7 +1,7 @@
 {
   "name": "rca-react-app",
   "version": "0.1.0",
-  "homepage": "https://imkaransandhu.github.io/react-rca",
+  "homepage": "https://imkaransandhu.github.io/react-rca/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
