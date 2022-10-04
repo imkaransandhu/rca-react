@@ -1,64 +1,34 @@
 import "./Filter.css";
 import "./../App.css";
 import { useNavigate } from "react-router-dom";
+import InputFilter from "./InputFilter";
+import SearchFilter from "./SearchFilter";
 
-const Filter = ({
-  allRegions,
-  activeRegion,
-  updateRegion,
-  allCountriesName,
-  setActiveCountry,
-}) => {
-  const navigate = useNavigate();
+const Filter = ({ props }) => {
+  //Deconstructing the props
+  const {
+    withoutDupAllRegions: regions,
+    withoutDupAllCountriesName: countriesName,
+    activeRegion,
+    updateRegion,
+  } = props;
 
+  const inputFilterProps = { countriesName, updateCountry }; // input component props
+  const searchFilterProps = { activeRegion, updateRegion, regions }; // search component props
+
+  const navigate = useNavigate(); // Navigation function to link to detail page
+
+  // Function to go to details page on Submit of form
   function updateCountry(e) {
     e.preventDefault();
-    let x = document.getElementById("search-country").value;
-    console.log(x);
-    setActiveCountry(x);
-    navigate(`/countrydetails/:${x}`);
+    const countryName = document.getElementById("search-country").value;
+    navigate(`/countrydetails/${countryName}`);
   }
 
   return (
     <section className="filter">
-      <div className="search-filter">
-        <form onSubmit={updateCountry}>
-          <input
-            id="search-country"
-            list="country"
-            placeholder="Enter your country..."
-          />
-        </form>
-
-        <datalist id="country">
-          {allCountriesName.map((countryName, index) => {
-            return (
-              <option
-                className="country-item"
-                key={index}
-                value={countryName}
-              />
-            );
-          })}
-        </datalist>
-      </div>
-      <div className="region-filter">
-        <select
-          value={activeRegion}
-          name="region"
-          id="regions"
-          onChange={updateRegion}
-        >
-          <option className="region-tem">Select your region</option>
-          {allRegions.map((region, index) => {
-            return (
-              <option key={index} className="region-tem">
-                {region}
-              </option>
-            );
-          })}
-        </select>
-      </div>
+      <InputFilter props={inputFilterProps} />
+      <SearchFilter props={searchFilterProps} />
     </section>
   );
 };

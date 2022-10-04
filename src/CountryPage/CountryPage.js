@@ -1,13 +1,43 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "./../App.css";
+import "./CountryPage.css";
+import BackBreadcrum from "./BackBreadcrum";
 
-const CountryPage = ({ activeCountry }) => {
+import CountryDetails from "./CountryDetails";
+const CountryPage = () => {
   const { key } = useParams();
-  console.log(activeCountry);
+
+  const [activeCountry, setActiveCountry] = useState({});
+  const [borderCountries, setBorderCountries] = useState([]);
+
+  const [load, setLoad] = useState(false);
+
+  useEffect(() => {
+    setBorderCountries([]);
+    const fetchCounty = async () => {
+      const prom = await fetch(
+        `https://restcountries.com/v3.1/name/${key}?fullText=true`
+      );
+      const res = await prom.json();
+      const data = await res;
+      setActiveCountry(data[0]);
+      if (data[0].borders) {
+        setBorderCountries(data[0].borders);
+      }
+      setLoad(true);
+    };
+
+    fetchCounty();
+  }, [key]);
+
+  const countryDetailsPropsObject = { borderCountries, activeCountry };
+
   return (
-    <h1 name={key} className="country-page">
-      {activeCountry.name.common}
-    </h1>
+    <div>
+      <BackBreadcrum />
+      {load && <CountryDetails props={countryDetailsPropsObject} />}
+    </div>
   );
 };
 
