@@ -3,7 +3,7 @@
   padding: 4rem 5%;
 }
 
-.breadcrum button {
+.breadcrum .back-button {
   padding: 0.5rem 1.5rem;
   border: 0;
   border-radius: 0.25rem;
@@ -32,7 +32,7 @@
 
 .right h3 {
   margin-top: 2.5rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .detail-left,
@@ -56,6 +56,7 @@
   flex-grow: 1;
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .border-countries-title {
@@ -65,6 +66,11 @@
 
 .detail p {
   margin-top: 1rem;
+  font-weight: 600;
+}
+
+.detail p span {
+  font-weight: normal;
 }
 
 .border-countries-names button {
@@ -74,6 +80,7 @@
   border-radius: 0.25rem;
   background-color: var(--Dark-Mode-Elements);
   color: #ffffff;
+  margin-top: 0.5rem;
 }
 
 button,
