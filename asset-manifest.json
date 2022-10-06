@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/github.io/rca-react/static/css/main.d834130b.css",
-    "main.js": "/github.io/rca-react/static/js/main.3875241a.js",
-    "index.html": "/github.io/rca-react/index.html",
-    "main.d834130b.css.map": "/github.io/rca-react/static/css/main.d834130b.css.map",
-    "main.3875241a.js.map": "/github.io/rca-react/static/js/main.3875241a.js.map"
+    "main.css": "/rca-react/static/css/main.d834130b.css",
+    "main.js": "/rca-react/static/js/main.3875241a.js",
+    "index.html": "/rca-react/index.html",
+    "main.d834130b.css.map": "/rca-react/static/css/main.d834130b.css.map",
+    "main.3875241a.js.map": "/rca-react/static/js/main.3875241a.js.map"
   },
   "entrypoints": [
     "static/css/main.d834130b.css",
