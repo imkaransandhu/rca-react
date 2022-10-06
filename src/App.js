@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AllCountries from "./Country/AllCountries";
@@ -42,14 +43,23 @@ function App() {
 
   // UseEffect to work on region change
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/region/${activeRegion}`)
-      .then((res) => res.json())
+    axios
+      .get(`https://restcountries.com/v3.1/region/${activeRegion}`)
       .then((allData) => {
-        allData.map((data) =>
+        allData.data.map((data) =>
           setAllCountries((oldArray) => [...oldArray, data])
         );
       })
       .catch((error) => console.error(error));
+
+    // fetch(`https://restcountries.com/v3.1/region/${activeRegion}`)
+    // .then((res) => res.json())
+    // .then((allData) => {
+    //   allData.map((data) =>
+    //     setAllCountries((oldArray) => [...oldArray, data])
+    //   );
+    // })
+    // .catch((error) => console.error(error));
   }, [activeRegion]);
 
   // Props for Filer Component
