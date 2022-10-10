@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/rca-react/static/css/main.038d7ec6.css",
-    "main.js": "/rca-react/static/js/main.2d452a24.js",
+    "main.css": "/rca-react/static/css/main.28d7a658.css",
+    "main.js": "/rca-react/static/js/main.88f4031d.js",
     "index.html": "/rca-react/index.html",
-    "main.038d7ec6.css.map": "/rca-react/static/css/main.038d7ec6.css.map",
-    "main.2d452a24.js.map": "/rca-react/static/js/main.2d452a24.js.map"
+    "main.28d7a658.css.map": "/rca-react/static/css/main.28d7a658.css.map",
+    "main.88f4031d.js.map": "/rca-react/static/js/main.88f4031d.js.map"
   },
   "entrypoints": [
-    "static/css/main.038d7ec6.css",
-    "static/js/main.2d452a24.js"
+    "static/css/main.28d7a658.css",
+    "static/js/main.88f4031d.js"
   ]
 }
