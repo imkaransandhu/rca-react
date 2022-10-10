@@ -76,7 +76,7 @@ function App() {
 
       <Routes>
         <Route
-          path="/"
+          path="/rca-react"
           element={
             <div>
               <Filter props={filterPropsObject} />
@@ -85,7 +85,10 @@ function App() {
           }
         />
 
-        <Route path="/countrydetails/:key" element={<CountryPage />} />
+        <Route
+          path="/rca-react/countrydetails/:key"
+          element={<CountryPage />}
+        />
       </Routes>
     </BrowserRouter>
   );

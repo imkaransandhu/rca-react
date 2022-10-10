@@ -1,7 +1,7 @@
 {
   "name": "rca-react-app",
   "version": "0.1.0",
-  "homepage": "https://imkaransandhu/github.io/rca-react",
+  "homepage": "https://imkaransandhu.github.io/rca-react",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -49,7 +49,9 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "gh-pages": "^4.0.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "sass": "^1.55.0",
+    "scss": "^0.2.4"
   },
   "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
   "dev": "parcel src/index.html"

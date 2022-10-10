@@ -1,5 +1,5 @@
-import "./Filter.css";
-import "./../App.css";
+import "./Filter.scss";
+import "./../App.scss";
 import { useNavigate } from "react-router-dom";
 import InputFilter from "./InputFilter";
 import SearchFilter from "./SearchFilter";
@@ -22,7 +22,7 @@ const Filter = ({ props }) => {
   function updateCountry(e) {
     e.preventDefault();
     const countryName = document.getElementById("search-country").value;
-    navigate(`/countrydetails/${countryName}`);
+    navigate(`/rca-react/countrydetails/${countryName}`);
   }
 
   return (

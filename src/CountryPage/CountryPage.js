@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./../App.css";
-import "./CountryPage.css";
+import "./../App.scss";
+import "./CountryPage.scss";
 import BackBreadcrum from "./BackBreadcrum";
 
 import CountryDetails from "./CountryDetails";
