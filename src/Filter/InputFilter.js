@@ -1,3 +1,5 @@
+import { BsSearch } from "react-icons/bs";
+
 const InputFilter = ({ props }) => {
   const { updateCountry, countriesName } = props;
   return (
@@ -8,6 +10,9 @@ const InputFilter = ({ props }) => {
           list="country"
           placeholder="Enter your country..."
         />
+        <button className="search-button">
+          <BsSearch />
+        </button>
       </form>
 
       <datalist id="country">

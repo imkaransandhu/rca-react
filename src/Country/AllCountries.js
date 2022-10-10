@@ -1,21 +1,27 @@
 import "./Country.scss";
 import "./../App.scss";
 import Country from "./Country";
+import LoaderCountryElement from "./LoaderCountryElement/LoaderCountryElement";
+import { Fragment } from "react";
 
 const AllCountries = ({ allCountries }) => {
   return (
     <div className="all-countries">
-      {allCountries.length != 0 ? (
+      {allCountries.length !== 0 ? (
         allCountries.map((country, index) => (
           <Country country={country} key={index} />
         ))
       ) : (
-        <div className="container">
-          <div className="ring"></div>
-          <div className="ring"></div>
-          <div className="ring"></div>
-          <p>Loading...</p>
-        </div>
+        <Fragment>
+          <LoaderCountryElement />
+          <LoaderCountryElement />
+          <LoaderCountryElement />
+          <LoaderCountryElement />
+          <LoaderCountryElement />
+          <LoaderCountryElement />
+          <LoaderCountryElement />
+          <LoaderCountryElement />
+        </Fragment>
       )}
     </div>
   );

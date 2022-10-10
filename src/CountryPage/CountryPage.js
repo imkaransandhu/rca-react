@@ -5,6 +5,7 @@ import "./CountryPage.scss";
 import BackBreadcrum from "./BackBreadcrum";
 
 import CountryDetails from "./CountryDetails";
+import LoaderCountry from "./LoaderCountry/LoaderCountry";
 const CountryPage = () => {
   const { key } = useParams();
 
@@ -14,6 +15,7 @@ const CountryPage = () => {
   const [load, setLoad] = useState(false);
 
   useEffect(() => {
+    setLoad(false);
     setBorderCountries([]);
     const fetchCounty = async () => {
       const prom = await fetch(
@@ -36,7 +38,11 @@ const CountryPage = () => {
   return (
     <div>
       <BackBreadcrum />
-      {load && <CountryDetails props={countryDetailsPropsObject} />}
+      {load ? (
+        <CountryDetails props={countryDetailsPropsObject} />
+      ) : (
+        <LoaderCountry />
+      )}
     </div>
   );
 };

@@ -32,7 +32,7 @@ const BorderCountries = ({ countries }) => {
       <div className="border-countries-names">
         {borderCountriesName.map((country, index) => (
           <button key={index}>
-            <Link to={`/countrydetails/${country}`}>{country}</Link>
+            <Link to={`/rca-react/countrydetails/${country}`}>{country}</Link>
           </button>
         ))}
       </div>
