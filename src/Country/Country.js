@@ -28,7 +28,7 @@ const Country = ({ country }) => {
     <div className="country">
       <Link
         name={country.name.official}
-        to={`/rca-react/countrydetails/${country.name.official}`}
+        to={`/rca-react/country/${country.name.official}`}
       >
         <div className="country-header">
           <img

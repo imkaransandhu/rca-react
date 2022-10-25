@@ -3,34 +3,36 @@ import { useEffect, useState } from "react";
 import "./../App.scss";
 import "./CountryPage.scss";
 import BackBreadcrum from "./BackBreadcrum";
+import axios from "axios";
 
 import CountryDetails from "./CountryDetails";
 import LoaderCountry from "./LoaderCountry/LoaderCountry";
+import CountryNotFound from "./CountryNotFound/CountryNotFound";
 const CountryPage = () => {
   const { key } = useParams();
 
   const [activeCountry, setActiveCountry] = useState({});
   const [borderCountries, setBorderCountries] = useState([]);
+  const [countryFound, setCountryFound] = useState(true);
 
   const [load, setLoad] = useState(false);
 
   useEffect(() => {
     setLoad(false);
     setBorderCountries([]);
-    const fetchCounty = async () => {
-      const prom = await fetch(
-        `https://restcountries.com/v3.1/name/${key}?fullText=true`
-      );
-      const res = await prom.json();
-      const data = await res;
-      setActiveCountry(data[0]);
-      if (data[0].borders) {
-        setBorderCountries(data[0].borders);
-      }
-      setLoad(true);
-    };
-
-    fetchCounty();
+    axios
+      .get(`https://restcountries.com/v3.1/name/${key}?fullText=true`)
+      .then((allData) => {
+        setActiveCountry(allData.data[0]);
+        if (allData.data[0].borders) {
+          setBorderCountries(allData.data[0].borders);
+        }
+        setLoad(true);
+      })
+      .catch((error) => {
+        console.error(error.message);
+        setCountryFound(false);
+      });
   }, [key]);
 
   const countryDetailsPropsObject = { borderCountries, activeCountry };
@@ -38,8 +40,10 @@ const CountryPage = () => {
   return (
     <div>
       <BackBreadcrum />
-      {load ? (
+      {load && countryFound ? (
         <CountryDetails props={countryDetailsPropsObject} />
+      ) : countryFound !== true ? (
+        <CountryNotFound countryName={key} />
       ) : (
         <LoaderCountry />
       )}

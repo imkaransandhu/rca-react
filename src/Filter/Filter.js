@@ -6,15 +6,10 @@ import SearchFilter from "./SearchFilter";
 
 const Filter = ({ props }) => {
   //Deconstructing the props
-  const {
-    withoutDupAllRegions: regions,
-    withoutDupAllCountriesName: countriesName,
-    activeRegion,
-    updateRegion,
-  } = props;
+  const { countriesName: countriesName, activeRegion, updateRegion } = props;
 
   const inputFilterProps = { countriesName, updateCountry }; // input component props
-  const searchFilterProps = { activeRegion, updateRegion, regions }; // search component props
+  const searchFilterProps = { activeRegion, updateRegion }; // search component props
 
   const navigate = useNavigate(); // Navigation function to link to detail page
 
@@ -22,7 +17,7 @@ const Filter = ({ props }) => {
   function updateCountry(e) {
     e.preventDefault();
     const countryName = document.getElementById("search-country").value;
-    navigate(`/rca-react/countrydetails/${countryName}`);
+    navigate(`/rca-react/country/${countryName}`);
   }
 
   return (

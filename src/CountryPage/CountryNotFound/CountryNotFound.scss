@@ -1,0 +1,26 @@
+.country-not-found {
+  padding: 0 5%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  row-gap: 2rem;
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    span {
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+  }
+
+  .link-to-home {
+    a {
+      padding: 0.25rem 1rem;
+      margin-left: 2rem;
+      background-color: var(--Dark-Mode-Text-and-Light-Mode-Elements);
+      color: var(--Dark-Mode-Elements);
+      border-radius: 0.3rem;
+    }
+  }
+}

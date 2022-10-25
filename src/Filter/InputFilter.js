@@ -9,6 +9,7 @@ const InputFilter = ({ props }) => {
           id="search-country"
           list="country"
           placeholder="Enter your country..."
+          required
         />
         <button className="search-button">
           <BsSearch />

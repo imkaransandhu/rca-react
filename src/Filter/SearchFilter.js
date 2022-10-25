@@ -1,5 +1,15 @@
 const SearchFilter = ({ props }) => {
-  const { activeRegion, updateRegion, regions } = props;
+  const { activeRegion, updateRegion } = props;
+
+  // Array containing all regions
+  const REGIONS = [
+    "Oceania",
+    "Europe",
+    "Americas",
+    "Africa",
+    "Asia",
+    "Antarctic",
+  ];
   return (
     <div className="region-filter">
       <select
@@ -8,8 +18,10 @@ const SearchFilter = ({ props }) => {
         id="regions"
         onChange={updateRegion}
       >
-        <option className="region-tem">Select your region</option>
-        {regions.map((region, index) => {
+        <option disabled className="region-tem">
+          Select your region
+        </option>
+        {REGIONS.map((region, index) => {
           return (
             <option key={index} className="region-tem">
               {region}

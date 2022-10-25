@@ -4,11 +4,11 @@ import Country from "./Country";
 import LoaderCountryElement from "./LoaderCountryElement/LoaderCountryElement";
 import { Fragment } from "react";
 
-const AllCountries = ({ allCountries }) => {
+const AllCountries = ({ Countries }) => {
   return (
     <div className="all-countries">
-      {allCountries.length !== 0 ? (
-        allCountries.map((country, index) => (
+      {Countries.length !== 0 ? (
+        Countries.map((country, index) => (
           <Country country={country} key={index} />
         ))
       ) : (
